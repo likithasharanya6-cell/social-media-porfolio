@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { @apply bg-ink text-bone font-sans antialiased; }
+::selection { @apply bg-accent text-ink; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* Hidden only once JS arms the observer, so content never stays invisible */
+.js-reveal .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+.js-reveal .reveal.is-visible { opacity: 1; transform: none; }
+
+.placeholder-bg {
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,.025) 0 2px, transparent 2px 14px),
+    #161618;
+}
+.btn { @apply inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent; }
+.btn-primary { @apply btn bg-bone text-ink hover:bg-accent; }
+.btn-ghost { @apply btn border border-line text-bone hover:border-bone; }
+.eyebrow { @apply text-xs uppercase tracking-[0.25em] text-accent; }
